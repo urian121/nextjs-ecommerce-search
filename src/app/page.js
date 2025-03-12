@@ -1,7 +1,8 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search, ShoppingCart, Menu } from "lucide-react";
-import Image from "next/image";
+import ProductImage from "@/components/ProductImage";
+import Nav from "@/components/Nav";
 
 export default async function Home() {
   const url_api = "https://api.escuelajs.co/api/v1/products";
@@ -17,25 +18,7 @@ export default async function Home() {
             <h1 className="text-xl font-bold">TiendaOnline</h1>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
-            <a href="#" className="text-sm font-medium hover:text-primary">
-              Inicio
-            </a>
-            <a href="#" className="text-sm font-medium hover:text-primary">
-              Productos
-            </a>
-            <a href="#" className="text-sm font-medium hover:text-primary">
-              Categorías
-            </a>
-            <a href="#" className="text-sm font-medium hover:text-primary">
-              Ofertas
-            </a>
-            <a href="#" className="text-sm font-medium hover:text-primary">
-              Contacto
-            </a>
-          </nav>
-
+          <Nav />
           <div className="flex items-center space-x-4">
             <Button variant="ghost" size="icon">
               <ShoppingCart className="h-5 w-5" />
@@ -64,12 +47,7 @@ export default async function Home() {
               className="border overflow-hidden hover:shadow-md transition-shadow"
             >
               <div className="relative h-72 bg-muted">
-                <Image
-                  src={product.images[0] || "/placeholder.svg"}
-                  alt={product.title}
-                  fill
-                  className="object-cover"
-                />
+                <ProductImage src={product.images[0]} alt={product.title} />
               </div>
               <div className="p-4 space-y-2 mt-2">
                 <h3 className="font-medium text-lg mb-8 opacity-80">
