@@ -1,13 +1,36 @@
+"use client"; // Necesario porque usamos useState y useEffect
+
+import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search, ShoppingCart, Menu } from "lucide-react";
 import ProductImage from "@/components/ProductImage";
 import Nav from "@/components/Nav";
 
-export default async function Home() {
+export default function Home() {
   const url_api = "https://api.escuelajs.co/api/v1/products";
-  const data = await fetch(url_api);
-  const products = await data.json();
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    // Cargar los productos al montar el componente
+    const fetchProducts = async () => {
+      const response = await fetch(url_api);
+      const data = await response.json();
+      setProducts(data);
+      setFilteredProducts(data); // Mostrar todos al inicio
+    };
+    fetchProducts();
+  }, []);
+
+  // Filtrar productos en tiempo real
+  useEffect(() => {
+    const results = products.filter((product) =>
+      product.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredProducts(results);
+  }, [searchTerm, products]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -34,14 +57,19 @@ export default async function Home() {
       <div className="container mx-auto px-4 py-6">
         <div className="max-w-md mx-auto relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-          <Input className="pl-10" placeholder="Buscar productos..." />
+          <Input
+            className="pl-10"
+            placeholder="Buscar productos..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
       </div>
 
       {/* Products Grid */}
       <div className="container mx-auto px-4 py-6 flex-1">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <div
               key={product.id}
               className="border overflow-hidden hover:shadow-md transition-shadow"
@@ -64,6 +92,13 @@ export default async function Home() {
             </div>
           ))}
         </div>
+
+        {/* Mostrar mensaje si no hay productos */}
+        {filteredProducts.length === 0 && (
+          <p className="text-center text-gray-500">
+            No se encontraron productos.
+          </p>
+        )}
       </div>
     </div>
   );

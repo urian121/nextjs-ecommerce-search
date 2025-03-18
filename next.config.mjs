@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["api.escuelajs.co", "picsum.photos"], // Agrega dominios conocidos
+    domains: ["api.escuelajs.co", "picsum.photos", "images.remotePatterns"], // Agrega dominios conocidos
     dangerouslyAllowSVG: true, // Permite imágenes en formato SVG
     contentSecurityPolicy:
       "default-src 'self'; img-src *; media-src *; script-src 'none'; sandbox;",
