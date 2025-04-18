@@ -1,19 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# E-commerce con Next.js 15
 
-## Getting Started
+Aplicación desarrollada con **Next.js 15** que demuestra cómo:
 
-First, run the development server:
+- Consumir una API REST de forma eficiente.
+- Construir el frontend de una tienda en línea moderna.
+- Implementar un buscador con filtros para encontrar productos fácilmente.
+- Incorporar funcionalidades clave típicas de un e-commerce.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Ideal como base para proyectos similares o para aprender sobre desarrollo web con Next.js.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-npx shadcn@latest add input button
-pnpm install lucide-react
+### Resultado final
+
+![](https://raw.githubusercontent.com/urian121/imagenes-proyectos-github/refs/heads/master/nextjs-ecommerce-search.png)
+
+
+## 🙌 Cómo puedes apoyar 📢:
+
+✨ **Comparte este proyecto** con otros desarrolladores para que puedan beneficiarse 📢.
+
+☕ **Invítame un café o una cerveza 🍺**:
+   - [Paypal](https://www.paypal.me/iamdeveloper86) (`iamdeveloper86@gmail.com`).
+
+### ⚡ ¡No olvides SUSCRIBIRTE a la [Comunidad WebDeveloper](https://www.youtube.com/WebDeveloperUrianViera?sub_confirmation=1)!
+
+
+#### ⭐ **Déjanos una estrella en GitHub**:
+   - Dicen que trae buena suerte 🍀.
+**Gracias por tu apoyo 🤓.**
